@@ -17,7 +17,7 @@ def draw(screen, numbers):
         count += 1
 
 def callDraw(screen, numbers):
-    states = Sort.insertionSort(numbers)
+    states = Sort.bubbleSort(numbers)
     for number in states:
         print(number)
         draw(screen, number)
