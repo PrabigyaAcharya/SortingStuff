@@ -1,20 +1,17 @@
 class Sort:
     #selection sort
-    def selectionSort(num =[1, 2, 3, 65, 34, 2,3]):
-        all_perm = []
+    def selectionSort(num):
+        all_perm = [num.copy()]
         for i in range(len(num)-1):
-            for j in range(i, len(num)):
-                if num[j] < num [i]:
-                    num[i], num[j] = num[j], num[i]
-                    temp = num.copy()
-                    all_perm.append(temp)
+            min_index = i
+            for j in range(i+1, len(num)):
+                if num[min_index] > num[j]:
+                    min_index = j
+            num[i], num[min_index] = num[min_index], num[i]
+            all_perm.append(num.copy())
         return all_perm
 
-
-
-
-    #selection sort but O(n) ->idk how tho
-    def idkwhatsort(num=[44, 35, 12, 43, 12, 2, 1, 4, 23, 4]):
+    def test(num):
         listend = len(num)+1
         for i in range(0,len(num)-1):
             listend -= 1
@@ -37,24 +34,22 @@ class Sort:
         return a,b   
     
     def insertionSort(num):
-        temp = []
-        for i in range (len(num)):
-            for j in range(len(num)):
-                if num[i] < num[j]:
-                    num[i], num[j] = Sort.swap(num[i], num[j])
-                temp.append(num.copy())
+        temp = [num.copy()]
+        for i in range (1, len(num)):
+            present = num[i]
+            j = i-1
+            while j>=0 and present<num[j]:
+                num[j+1] = num[j]
+                j -=1
+            num[j+1] = present
+            temp.append(num.copy())
         return temp
 
     def bubbleSort(num):
         temp = []
-        for i in range(len(num)-1):
-            isSwapped = False
-            for j in range(len(num)-1):
+        for i in range(len(num)):
+            for j in range(len(num)-i-1):
                 if num[j]>num[j+1]:
                     num[j], num[j+1] = num[j+1], num[j]
-                    chor = num.copy()
-                    temp.append(chor)
-                    isSwapped = True
-            if isSwapped == False:
-                break
+                temp.append(num.copy())
         return temp

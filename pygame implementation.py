@@ -17,7 +17,7 @@ def draw(screen, numbers):
         count += 1
 
 def callDraw(screen, numbers):
-    states = Sort.bubbleSort(numbers)
+    states = Sort.insertionSort(numbers)
     for number in states:
         print(number)
         draw(screen, number)
@@ -42,7 +42,7 @@ draw(screen, numbers)
 
 
 while run:
-    for event in pygame.event.get():
+    for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             run = False
 
